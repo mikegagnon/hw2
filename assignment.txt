@@ -1,0 +1,59 @@
+HW 2 assignment, Part 1
+=======================
+
+Create a lights out game, playable in the browser.
+DEMO: https://mikegagnon.github.io/hw2/
+(do not look at the source code, that would be cheating)
+
+Guide
+-----
+Create index.html
+Create lights-out.js
+Create style.css
+
+In index.html create a div with id="game1"
+Inside the game1 div, create four "row divs", which each div represents a row.
+Inside each row div, create four "button" divs.
+	Each button should have class="button", data-row="whatever" and data-col="whatever"
+	For example, in the second row, the last button should be like:
+		<div class="button" data-row="1" data-col="3"></div>
+Inside style.css, define the "button" class:
+	.button {
+	  width: 50px;
+	  height: 50px;
+	  background-color: #d3d3d3;
+	  padding: 10px;
+	  display: inline-block;
+	  cursor: pointer;
+	}
+
+Inside lights-out.js, create a function called "randomize()"
+	When called, this function:
+		(a) iterates over each button
+		(b) grabs the div for each button (using document.querySelector, you'll need to google this to figure out how to grab the div using querySelector)
+		(c) Flip a coin (using Math.random()). Half the time, set the button to on, by using div.classList to add the class "on" to div (you'll need to google div.classList.toggle).
+			Also, you'll need to add the "on" class to the .css file:
+				.on {
+				  background-color: hotpink;
+				}
+
+
+Inside lights-out.js, create a function called "registerClicks":
+	This function should iterate over each button, and "add an event listener" to each button.
+	Once again, you will need to use querySelectorAll
+	For each button div use the "addEventListener" method, to register a "click" handler
+		The click handler function, should toggle (using classList.toggle) whether or not the button has the "on" class in the button div.
+		Therefore, whenever you click a button, it switches from gray to pink, or vice versa
+
+
+Tips
+----
+- While debugging your hw, use "console.log" (you will need to look it up on the web)
+- Also, for debugging help, figure out how to inspect the HTML dynamically using your web browser
+
+
+
+
+
+
+

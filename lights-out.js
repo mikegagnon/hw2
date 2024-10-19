@@ -42,7 +42,8 @@ class LightsOut {
 			button.addEventListener("click", () => {
 				const row = parseInt(button.dataset.row, 10);
 				const col = parseInt(button.dataset.col, 10);
-				const neighbors = this.getNeighbors(row, col);
+				//const neighbors = this.getNeighbors(row, col);
+				const neighbors = [];
 				neighbors.forEach(neighbor => {
 					const [nRow, nCol] = neighbor;	
 					const neighborButton = document.querySelector(`#${this.gameId} [data-row="${nRow}"][data-col="${nCol}"]`);
@@ -50,10 +51,10 @@ class LightsOut {
 				});
 				button.classList.toggle("on");
 
-				if (this.checkWin()) {
+				/*if (this.checkWin()) {
 					console.log("You win!");
 					alert("You win!");
-				}
+				}*/
 			});
 		});
 	}
