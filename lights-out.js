@@ -13,7 +13,7 @@ class LightsOut {
 			for (let c = 0; c < this.numCols; c++) {
 				const div = document.querySelector(`#${this.gameId} [data-row="${r}"][data-col="${c}"]`);
 				const state = Math.random() < 0.5;
-				div.dataset.state = state ? "on" : "off";
+				//div.dataset.state = state ? "on" : "off";
 				div.classList.toggle("on", state);
 			}
 		}
@@ -32,6 +32,10 @@ class LightsOut {
 		return neighbors;
 	}
 
+	checkWin() {
+		return document.querySelectorAll(`#${this.gameId} .button.on`).length === 0;
+	}
+
 	// register click handlers
 	registerClicks() {
 		document.querySelectorAll(`#${this.gameId} .button`).forEach(button => {
@@ -45,6 +49,11 @@ class LightsOut {
 					neighborButton.classList.toggle("on");
 				});
 				button.classList.toggle("on");
+
+				if (this.checkWin()) {
+					console.log("You win!");
+					alert("You win!");
+				}
 			});
 		});
 	}
