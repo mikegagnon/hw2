@@ -1,0 +1,155 @@
+Section 1
+=========
+Create a new directory somewhere on your system, called "workspace"
+
+Inside "workspace" create a dir called "homework-1"
+
+Inside "homework-1" create three files (all empty files at first):
+- a file called index.html
+- a file called style.css
+- a file called homework-1.js
+
+Fill in index.html so it contains:
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Page Title</title>
+<body>
+   <h1>This is a Heading</h1>
+   <p>This is a paragraph.</p>
+   <p>This is another paragraph.</p>
+</body>
+</html>
+
+This html file came from https://www.w3schools.com/whatis/whatis_html.asp
+
+Open the index.html file in your browser, and observe what it looks like.
+
+Section 2
+=========
+Now, edit style.css so it contains:
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+}
+
+This css file came from https://www.w3schools.com/css/default.asp
+
+Now, we need to edit index.html so that it loads the css file:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <link rel="stylesheet" href="style.css">
+   <title>Page Title</title>
+</head>
+<body>
+   <h1>This is a Heading</h1>
+   <p>This is a paragraph.</p>
+   <p>This is another paragraph.</p>
+</body>
+</html>
+
+Notice, I have added a "head" elemt, which wraps around the "meta" element, the "link" element, and the "title" element.
+
+The "link" element is used to import the style.css file.
+
+Now, reload the index.html page in your browser.
+
+The page should look different.
+
+Section 3
+=========
+Now, edit homework-1.js so it contains:
+function handleClick() {
+	alert("Hi there!");
+}
+
+Now, we need to edit index.html so that it loads the .js file:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <link rel="stylesheet" href="style.css">
+   <title>Page Title</title>
+</head>
+<body>
+   <h1 onclick="handleClick()">This is a Heading</h1>
+   <p>This is a paragraph.</p>
+   <p>This is another paragraph.</p>
+</body>
+<script src="homework-1.js"></script>
+</html>
+
+Notice two changes:
+  1. the h1 element now has an "onclick" attribute
+  2. a "script" element has been added, to import the .js file
+
+Reload the .html file in your browswer, then click on the heading that says "This is a Heading." A little popup should pop up that says "Hi there!"
+
+References:
+- https://www.w3schools.com/whatis/whatis_html.asp
+- https://www.w3schools.com/html/html_basic.asp
+- https://www.w3schools.com/css/css_howto.asp
+
+The End.
+
+Section 4
+=========
+Now, let's add some interactivity to our page using JavaScript. We'll create a button that changes the color of the heading when clicked.
+
+First, add a button to your HTML file:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <link rel="stylesheet" href="style.css">
+   <title>Page Title</title>
+</head>
+<body>
+   <h1 id="mainHeading" onclick="handleClick()">This is a Heading</h1>
+   <p>This is a paragraph.</p>
+   <p>This is another paragraph.</p>
+   <button id="colorButton">Change Heading Color</button>
+</body>
+<script src="homework-1.js"></script>
+</html>
+
+Now, update your homework-1.js file to include the following code:
+
+function handleClick() {
+	alert("Hi there!");
+}
+
+function changeColor() {
+    const heading = document.getElementById('mainHeading');
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    heading.style.color = "#" + randomColor;
+}
+
+document.getElementById('colorButton').addEventListener('click', changeColor);
+
+This JavaScript code does the following:
+1. We keep the original handleClick() function.
+2. We add a new changeColor() function that generates a random color and applies it to the heading.
+3. We add an event listener to the button that calls the changeColor() function when clicked.
+
+Reload your HTML file in the browser. Now you should see a button below the paragraphs. When you click this button, it should change the color of the heading to a random color.
+
+This demonstrates how we can use JavaScript to manipulate the DOM (Document Object Model) and respond to user interactions.
+
+References:
+- https://www.w3schools.com/js/js_htmldom.asp
+- https://www.w3schools.com/jsref/met_document_getelementbyid.asp
+- https://www.w3schools.com/jsref/met_element_addeventlistener.asp
+
